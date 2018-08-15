@@ -6,5 +6,8 @@ class User < ApplicationRecord
   has_many :items, dependent: :destroy
   belongs_to :city
   has_many :reviews, as: :reviewable
+  has_many :authored_reviews, class_name: 'Review', foreign_key: :author_id,
+                                                  dependent: :nullify
+
 
 end
