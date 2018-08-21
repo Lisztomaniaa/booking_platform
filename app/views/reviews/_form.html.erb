@@ -1,6 +1,6 @@
-<% form for ([@item, @item.reviews.build]) do |f| %>
+<%= form_for ([@item, @item.reviews.build]) do |f| %>
   <%= f.label :feedback %><br>
-  <%= f.text_filed :feedback %><br>
+  <%= f.text_field :feedback %><br>
 <br>
 <%= f.submit %>
 <% end %>

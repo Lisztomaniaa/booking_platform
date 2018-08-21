@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
   # GET /items/1.json
   def show
     @item = Item.find(params[:id])
+    @review = @item.reviews.build
   end
 
   # GET /items/new
