@@ -1,0 +1,11 @@
+<div>
+  <%= @user.name %>
+</div>
+
+<div id="reviews">
+  <h2><%= @user.reviews.count %> Reviews</h2>
+  <%= render @user.reviews %>
+  <h3> leave review </h3>
+  <%= render "reviews/form", review: @user.reviews.build %>
+
+</div>

@@ -1,10 +1,13 @@
 class ReviewsController < ApplicationController
   def create
-    @item = Item.find(params[:item_id])
-    @review = @item.reviews.build(params[:review].permit(:feedback))
+    @review = Review.new(review_params)
     @review.author = current_user
     @review.save
 
-    redirect_to item_path(@item)
+    redirect_to (@review.reviewable_type == 'Item' ? item_path(@review.reviewable) : root_path) #user_path(@review.reviewable)
+  end
+
+  def review_params
+    params[:review].permit(:feedback, :reviewable_id, :reviewable_type)
   end
 end

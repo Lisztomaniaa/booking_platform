@@ -4,6 +4,11 @@ cd <p id="notice"><%= notice %></p>
   <strong>Name:</strong>
   <%= @item.name %>
 </p>
+<p>
+  <strong>Owner :</strong>
+  <%= link_to @item.owner.name, user_path(@item.owner) %>
+</p>
+
 
 <!-- <%#= render 'reviews list' %>
 <h3> leave review </h3>
@@ -17,6 +22,6 @@ cd <p id="notice"><%= notice %></p>
   <h2><%= @item.reviews.count %> Reviews</h2>
   <%= render @item.reviews %>
   <h3> leave review </h3>
-  <%= render "reviews/form" %>
+  <%= render "reviews/form", review: @item.reviews.build %>
 
 </div>

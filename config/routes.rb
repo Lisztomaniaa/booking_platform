@@ -4,15 +4,15 @@ Rails.application.routes.draw do
     collection do
       get :owned
     end
-    resources :reviews
+    resources :reviews, except: :create
 end
   resources :bookings
   devise_for :users
-  devise_for :models
-  resources :users
+  resources :users, only: :show
+
 
   root 'items#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-
+  resources :reviews, only: :create
 end
