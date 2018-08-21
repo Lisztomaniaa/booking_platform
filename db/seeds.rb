@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 categorys = Category.create ([{name: 'Bikes'},{name: 'Beach rents'},{name: 'Camps & Tours'},{name: 'Winter rents'}])
-citys = City.create([{name: 'Lviv'}, {name: 'Ivano-Frankivsk'}, {name: 'Rivne'}, {name: 'New York'}, {name: 'Kyiv'}, {name: 'Los-Angeles'} ])
+citys = City.create([{name: 'Lviv'}, {name: 'Ivano-Frankivsk'},{name: 'Rivne'}, {name: 'New York'}, {name: 'Kyiv'}, {name: 'Los-Angeles'} ])

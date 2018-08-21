@@ -20,8 +20,7 @@ class ItemsController < ApplicationController
   # GET /items/1
   # GET /items/1.json
   def show
-    item = authorize Item.find(params[:id])
-    render json: ItemRepresenter.new(item)
+    @item = Item.find(params[:id])
   end
 
   # GET /items/new
@@ -83,6 +82,6 @@ class ItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def item_params
-      params.require(:item).permit(:name)
+      params.require(:item).permit(:name, :category_id, :price, :description)
     end
 end
