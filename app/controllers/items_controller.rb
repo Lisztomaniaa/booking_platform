@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   has_scope :by_category, type: :array
   has_scope :by_name
@@ -37,6 +38,7 @@ class ItemsController < ApplicationController
   # POST /items.json
   def create
     @item = Item.new(item_params)
+    @item.owner = current_user
 
     respond_to do |format|
       if @item.save
