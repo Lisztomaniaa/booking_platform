@@ -17,6 +17,9 @@ class ItemsController < ApplicationController
     # end
   end
 
+def owned
+  @items = current_user.items
+end
   # GET /items/1
   # GET /items/1.json
   def show
