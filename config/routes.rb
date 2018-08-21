@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   resources :items do
+    collection do
+      get :owned
+    end
     resources :reviews
 end
   resources :bookings
