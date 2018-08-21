@@ -1,0 +1,22 @@
+cd <p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @item.name %>
+</p>
+
+<!-- <%#= render 'reviews list' %>
+<h3> leave review </h3>
+<%#= render 'new review', review: Review.new %> -->
+
+<%= link_to 'Edit', edit_item_path(@item) %> |
+<%= link_to 'Back', items_path %>
+<%= link_to "Add Review", new_review_path(item_id: @item.id) %>
+
+<div id="reviews">
+  <h2><%= @item.reviews.count %> Reviews</h2>
+  <%= render @item.reviews %>
+  <h3> leave review </h3>
+  <%= render "reviews/form" %>
+
+</div>

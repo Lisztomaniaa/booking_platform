@@ -8,18 +8,25 @@ class ItemsController < ApplicationController
   # GET /items
   # GET /items.json
   def index
-    @items = apply_scopes(Item).all
-     paginate json: items.as_json, status: :ok
+     @items = apply_scopes(Item).all
+    # if params[:city_id]
+    #   @items = Item.by_city(params[:city_id])
+    # else
+    #   @items = Item.all
+    # end
   end
 
   # GET /items/1
   # GET /items/1.json
   def show
+    item = authorize Item.find(params[:id])
+    render json: ItemRepresenter.new(item)
   end
 
   # GET /items/new
   def new
-    @item = Item.new
+  @item = Item.new
+
   end
 
   # GET /items/1/edit
