@@ -1,4 +1,4 @@
-cd <p id="notice"><%= notice %></p>
+ <!-- <p id="notice"><%= notice %></p>
 
 <p>
   <strong>Name:</strong>
@@ -9,19 +9,55 @@ cd <p id="notice"><%= notice %></p>
   <%= link_to @item.owner.name, user_path(@item.owner) %>
 </p>
 
-
-<!-- <%#= render 'reviews list' %>
-<h3> leave review </h3>
-<%#= render 'new review', review: Review.new %> -->
-
 <%= link_to 'Edit', edit_item_path(@item) %> |
 <%= link_to 'Back', items_path %>
-<%#= link_to "Add Review", new_review_path(item_id: @item.id) %>
 
 <div id="reviews">
   <h2><%= @item.reviews.count %> Reviews</h2>
   <%= render @item.reviews %>
   <h3> leave review </h3>
-  <%= render "reviews/form", review: @item.reviews.build %>
+  <%= render "reviews/form", review: @item.reviews.build %> -->
 
+</div>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="star-rating" data-score= <%= @avg_review %> ></div>
+
+        <div class="table-responsive">
+          <table class="table">
+            <tbody>
+              <tr>
+                  <td><strong>Name:</strong>  </td>
+                  <td><%= @item.name %>  </td>
+              </tr>
+              <tr>
+                <td><strong>Description:</strong></td>
+                <td><%= @item.description %></td>
+              </tr>
+              <tr>
+                  <td><strong>Owner :</strong>  </td>
+                  <td><%= link_to @item.owner.name, user_path(@item.owner) %>  </td>
+              </tr>
+              <tr>
+                <td><strong>Price:</strong></td>
+                <td><%= @item.price %></td>
+              </tr>
+              <%= link_to 'Edit', edit_item_path(@item) %> |
+              <%= link_to 'Back', items_path %>
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+      <div class="col-md-7 col-md-offset-1">
+        <div id="reviews">
+          <h2><%= @item.reviews.count %> Reviews</h2>
+          <%= render @item.reviews %>
+          <h3> leave review </h3>
+          <%= render "reviews/form", review: @item.reviews.build %> -->
+      </div>
+    </div>
+  </div>
 </div>

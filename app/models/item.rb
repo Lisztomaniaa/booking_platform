@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   belongs_to :category
   belongs_to :owner, class_name: 'User', foreign_key: 'owner_id'
-  has_many :bookings
+  has_many :bookings,dependent: :destroy
   has_many :reviews, as: :reviewable
   validates_presence_of :name, :owner
 
