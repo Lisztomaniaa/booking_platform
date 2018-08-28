@@ -5,8 +5,9 @@ Rails.application.routes.draw do
       get :owned
     end
     resources :reviews, except: :create
+    resources :bookings
 end
-  resources :bookings
+
   devise_for :users
   resources :users, only: :show
 
