@@ -4,6 +4,8 @@ class ItemsController < ApplicationController
   has_scope :by_category, type: :array
   has_scope :by_name
   has_scope :by_city, type: :array
+  has_scope :available, using: %i[rent_start, rent_end], type: :hash
+   has_scope :booked, using: %i[rent_start, rent_end], type: :hash
 
 
   # GET /items

@@ -9,9 +9,11 @@ class Item < ApplicationRecord
   scope :by_city, ->(city_ids) { where(city_id: city_ids)}
 
   scope :by_name, ->(name) { where(arel_table[:name].matches("%#{name}%"))}
-  def end_date_after_start_date?
-   if date_to < date_from
-     errors.add(:date_to, "End date must be after the start date")
-    end
+  scope :booked, ->(rent_start,rent_end) do
+    b = Booking.areal_table
+    joins(:bookings).where(b[:rent_start].lteq(rent_end).and(b[:rent_end].qteq(rent_start)))
+  end
+  scope :available, ->(rent_start,rent_end) do
+    where.not(id: booked(rent_start, rent_end))
   end
 end
