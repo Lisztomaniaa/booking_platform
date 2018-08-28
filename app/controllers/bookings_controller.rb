@@ -1,51 +1,18 @@
 class BookingsController < ApplicationController
-  before_action :set_booking, only: [:show, :update, :destroy]
+  def new
 
-  # GET /bookings
-  def index
-    @bookings = Booking.all
-
-    render json: @bookings
+    @item = Property.find(params[:item_id])
+    @booking = Booking.new
   end
 
-  # GET /bookings/1
-  def show
-    render json: @booking
-  end
-
-  # POST /bookings
   def create
-    @booking = Booking.new(booking_params)
-
+    @item = Iem.find(params[:item_id])
+    @booking = @item.bookings.build(params[:booking])
     if @booking.save
-      render json: @booking, status: :created, location: @booking
+      flash[:success] = "Booking created"
+      redirect_to [@item, @booking]
     else
-      render json: @booking.errors, status: :unprocessable_entity
+      render 'new'
     end
-  end
-
-  # PATCH/PUT /bookings/1
-  def update
-    if @booking.update(booking_params)
-      render json: @booking
-    else
-      render json: @booking.errors, status: :unprocessable_entity
-    end
-  end
-
-  # DELETE /bookings/1
-  def destroy
-    @booking.destroy
-  end
-
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_booking
-      @booking = Booking.find(params[:id])
-    end
-
-    # Only allow a trusted parameter "white list" through.
-    def booking_params
-      params.fetch(:booking, {})
-    end
+end
 end

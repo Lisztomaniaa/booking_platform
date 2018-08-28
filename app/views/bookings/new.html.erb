@@ -1,0 +1,16 @@
+<h1>Create New Booking</h1>
+<hr />
+<%= form_for [@item, @booking] do |f| %>
+	<div class="field">
+		<%= f.label :rent_start %><br />
+		<%= f.text_field :rent_start %>
+	</div>
+	<div class="field">
+		<%= f.label :rent_end %><br />
+		<%= f.text_field :rent_end %>
+	</div>
+	<hr />
+	<div class="actions">
+		<%= f.submit "Create this booking" %> or <%= link_to "Cancel", property_path(@item) %>
+	</div>
+<% end %>

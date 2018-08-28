@@ -9,4 +9,9 @@ class Item < ApplicationRecord
   scope :by_city, ->(city_ids) { where(city_id: city_ids)}
 
   scope :by_name, ->(name) { where(arel_table[:name].matches("%#{name}%"))}
+  def end_date_after_start_date?
+   if date_to < date_from
+     errors.add(:date_to, "End date must be after the start date")
+    end
+  end
 end
