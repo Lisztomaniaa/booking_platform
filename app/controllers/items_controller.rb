@@ -27,6 +27,7 @@ end
   def show
     @item = Item.find(params[:id])
     @review = @item.reviews.build
+    @booking = @item.bookings
   end
 
   # GET /items/new

@@ -1,22 +1,4 @@
- <!-- <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
-<p>
-  <strong>Owner :</strong>
-  <%= link_to @item.owner.name, user_path(@item.owner) %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
-
-<div id="reviews">
-  <h2><%= @item.reviews.count %> Reviews</h2>
-  <%= render @item.reviews %>
-  <h3> leave review </h3>
-  <%= render "reviews/form", review: @item.reviews.build %> -->
 
 </div>
 <div class="panel panel-default">
@@ -49,6 +31,10 @@
             </tbody>
           </table>
 
+         <div id="booking">
+        <%= link_to "Add Booking", new_item_booking_path(@item) %></div>
+          </div>
+
         </div>
       </div>
       <div class="col-md-7 col-md-offset-1">
@@ -56,7 +42,7 @@
           <h2><%= @item.reviews.count %> Reviews</h2>
           <%= render @item.reviews %>
           <h3> leave review </h3>
-          <%= render "reviews/form", review: @item.reviews.build %> -->
+          <%= render "reviews/form", review: @item.reviews.build %>
       </div>
     </div>
   </div>
